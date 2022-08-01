@@ -2,11 +2,11 @@ from django.db import router
 from rest_framework.routers import DefaultRouter
 
 
-from products.viewsets import ProductViewSet
+from products.viewsets import ProductViewSet, ProductGenericViewSet
 
 
 router = DefaultRouter()
-router.register('products', ProductViewSet,
+router.register('products', ProductGenericViewSet,
                 basename='products')
 
 urlpatterns = router.urls
