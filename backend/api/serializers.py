@@ -1,5 +1,6 @@
 from asyncore import read
 from cgitb import lookup
+from requests import request
 from rest_framework import serializers
 
 
@@ -15,6 +16,7 @@ class UserPublicSerilizer(serializers.Serializer):
     other_products = serializers.SerializerMethodField(read_only=True)
 
     def get_other_products(self, obj):
+        request = self.context.get('request')
         user = obj
         my_products_qs = user.product_set.all()[:5]
-        return UserProductInlineSerializer(my_products_qs, many=True).data
+        return UserProductInlineSerializer(my_products_qs, many=True, context=self.context).data
