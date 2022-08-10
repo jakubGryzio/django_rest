@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party api services
+    'algoliasearch_django',
+
+    # third party packages
     'rest_framework',
     'rest_framework.authtoken',
+
+    # internal apps
     'api',
     'products',
     'search'
@@ -135,4 +141,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
     ]
+}
+
+ALGOLIA = {
+    'APPLICATION_ID': 'MX3JNNL8BP',
+    'API_KEY': '2d80320b48aa3a359bcb8dfcec069ead',
+    'INDEX_PREFIX': 'jg'
 }
